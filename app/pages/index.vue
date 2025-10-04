@@ -9,7 +9,7 @@ const zoom = ref(16);
 </script>
 
 <template>
-  <MglMap height="100vh" :map-style="style" :center="center" :zoom="zoom">
+  <MglMap height="100dvh" :map-style="style" :center="center" :zoom="zoom">
     <MglNavigationControl />
     <MglGeolocateControl />
     <MglCustomControl class="maplibregl-ctrl flex gap-2">
