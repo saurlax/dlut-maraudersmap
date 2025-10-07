@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     });
   }
   await setUserSession(event, {
-    user: { username: user.username },
+    user: { id: user.id, username: user.username },
   });
   return { message: "Login successful" };
 });

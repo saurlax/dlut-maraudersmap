@@ -12,15 +12,15 @@ const fields: AuthFormField[] = [
   {
     name: "username",
     type: "text",
-    label: "用户名",
-    placeholder: "请输入用户名",
+    label: "Username",
+    placeholder: "Please enter your username",
     required: true,
   },
   {
     name: "password",
     type: "password",
-    label: "密码",
-    placeholder: "请输入密码",
+    label: "Password",
+    placeholder: "Please enter your password",
     required: true,
   },
 ];
@@ -30,10 +30,7 @@ function login(payload: any) {
     method: "POST",
     body: payload.data,
   })
-    .then(async () => {
-      await fetch();
-      navigateTo("/");
-    })
+    .then(fetch)
     .catch((err) => {
       toast.add({
         title: err.message,

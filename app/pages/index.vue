@@ -45,9 +45,11 @@ onMounted(search);
     <MglNavigationControl />
     <MglGeolocateControl />
     <MglCustomControl class="maplibregl-ctrl">
-      <UForm class="flex gap-2" @submit.prevent="search">
-        <UInput v-model="q" placeholder="搜索" />
-        <UButton icon="i-lucide-search" type="submit" />
+      <UForm @submit.prevent="search">
+        <UFieldGroup>
+          <UInput v-model="q" placeholder="Search" />
+          <UButton icon="i-lucide-search" type="submit" />
+        </UFieldGroup>
       </UForm>
     </MglCustomControl>
     <MglCustomControl position="bottom-left" class="maplibregl-ctrl">

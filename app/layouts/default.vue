@@ -3,14 +3,17 @@ const { loggedIn, clear } = useUserSession();
 const items = [
   { label: "Map", to: "/" },
   { label: "Devices", to: "/devices" },
-  { label: "Users", to: "/users" },
+  { label: "Settings", to: "/settings" },
 ];
 </script>
 
 <template>
   <UHeader>
     <template #title>
-      <img src="/favicon.ico" class="w-6" />
+      <div class="flex items-center gap-2">
+        <img src="/favicon.ico" class="w-6" />
+        <h1><span class="text-primary">DLUT</span>MAP</h1>
+      </div>
     </template>
     <UNavigationMenu :items="items" />
     <template #right>
@@ -21,13 +24,6 @@ const items = [
         target="_blank"
         icon="i-simple-icons-github"
         aria-label="GitHub"
-      />
-      <UButton
-        v-if="loggedIn"
-        color="neutral"
-        variant="ghost"
-        icon="i-lucide-log-out"
-        @click="clear"
       />
     </template>
     <template #body>
