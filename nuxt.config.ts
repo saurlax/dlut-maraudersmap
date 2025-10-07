@@ -2,10 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "nuxt-maplibre"],
+  modules: ["@nuxt/ui", "nuxt-maplibre", "nuxt-auth-utils"],
   runtimeConfig: {
     public: {
-      maptilerKey: process.env.MAPTLER_KEY || "",
+      maptilerKey: process.env.MAPTLER_KEY,
     },
   },
   ssr: false,
