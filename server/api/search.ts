@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-  await requireUserSession(event);
   const { q } = getQuery(event);
   if (!q || typeof q !== "string") {
     throw createError({

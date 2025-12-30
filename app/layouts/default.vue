@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const { loggedIn, clear } = useUserSession();
 const items = [
   { label: "Map", to: "/" },
   { label: "Devices", to: "/devices" },
-  { label: "Settings", to: "/settings" },
 ];
 </script>
 

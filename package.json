@@ -10,22 +10,21 @@
     "postinstall": "nuxt prepare && prisma generate"
   },
   "dependencies": {
-    "@nuxt/ui": "4.2.1",
+    "@nuxt/ui": "4.3.0",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
-    "maplibre-gl": "^5.14.0",
-    "nuxt": "^4.2.1",
-    "nuxt-auth-utils": "0.5.25",
+    "maplibre-gl": "^5.15.0",
+    "nuxt": "^4.2.2",
     "nuxt-maplibre": "1.2.0",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "vue": "^3.5.25",
-    "vue-router": "^4.6.3"
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "prisma": "^7.2.0"
   },
-  "packageManager": "pnpm@10.24.0"
+  "packageManager": "pnpm@10.26.2"
 }
