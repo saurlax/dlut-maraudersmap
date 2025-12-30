@@ -1,6 +1,4 @@
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  return await prisma.device.create({
-    data: body,
-  });
+  return await db.insert(devices).values(body).returning();
 });

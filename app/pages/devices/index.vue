@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const toast = useToast();
-const devices = useFetch("/api/devices").data;
+const { data: devices } = useFetch("/api/devices");
 const createForm = reactive({
   mac: "",
   type: "",
