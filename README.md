@@ -1,1 +1,1 @@
-# :trollface: The Marauder's Map @ DLUT
+# The Marauder's Map @ DLUT
