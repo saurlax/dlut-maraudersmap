@@ -1,5 +1,5 @@
 {
-  "id": "5f2e6d95-818c-4ae1-af18-a63458024edc",
+  "id": "57808000-56e8-472f-be7d-dd4859c47033",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -70,6 +70,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "location": {
+          "name": "location",
+          "type": "point",
+          "primaryKey": false,
+          "notNull": true
         },
         "rssi": {
           "name": "rssi",

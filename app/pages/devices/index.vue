@@ -4,8 +4,7 @@ const { data: devices } = useFetch("/api/devices");
 const createForm = reactive({
   mac: "",
   type: "",
-  name: "",
-  description: "",
+  info: "",
 });
 
 function createDevice() {
@@ -18,7 +17,7 @@ function createDevice() {
         title: "Device added",
         color: "success",
       });
-      devices.value?.push(res);
+      devices.value = devices.value ? devices.value.concat(res) : res;
     })
     .catch((err) => {
       toast.add({
@@ -32,49 +31,32 @@ function createDevice() {
 
 <template>
   <UContainer>
-    <div class="my-4">
-      <UModal>
-        <UButton>Add Device</UButton>
-        <template #content>
-          <UCard>
-            <template #header>Add Device</template>
-            <UForm class="flex flex-col gap-4" @submit.prevent="createDevice">
-              <UFormField label="MAC">
-                <UInput
-                  class="w-full"
-                  placeholder="MAC Address"
-                  v-model="createForm.mac"
-                />
-              </UFormField>
-              <UFormField label="Type">
-                <UInput
-                  class="w-full"
-                  placeholder="Device Type"
-                  v-model="createForm.type"
-                />
-              </UFormField>
-              <UFormField label="Name">
-                <UInput
-                  class="w-full"
-                  placeholder="Device Name"
-                  v-model="createForm.name"
-                />
-              </UFormField>
-              <UFormField label="Description">
-                <UInput
-                  class="w-full"
-                  placeholder="Device Description"
-                  v-model="createForm.description"
-                />
-              </UFormField>
-              <UFormField>
-                <UButton type="submit">Add</UButton>
-              </UFormField>
-            </UForm>
-          </UCard>
-        </template>
-      </UModal>
-    </div>
+    <UPageHeader title="Devices">
+      <template #links>
+        <UModal>
+          <UButton>Add Device</UButton>
+          <template #content>
+            <UCard>
+              <template #header>Add Device</template>
+              <UForm class="flex flex-col gap-4" @submit.prevent="createDevice">
+                <UFormField label="MAC" required>
+                  <UInput class="w-full" v-model="createForm.mac" />
+                </UFormField>
+                <UFormField label="Type" required>
+                  <UInput class="w-full" v-model="createForm.type" />
+                </UFormField>
+                <UFormField label="Info">
+                  <UInput class="w-full" v-model="createForm.info" />
+                </UFormField>
+                <UFormField>
+                  <UButton type="submit">Add</UButton>
+                </UFormField>
+              </UForm>
+            </UCard>
+          </template>
+        </UModal>
+      </template>
+    </UPageHeader>
     <UTable :data="devices" />
   </UContainer>
 </template>

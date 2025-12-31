@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Report } from "@prisma/client";
-
 const toast = useToast();
 const router = useRouter();
 
@@ -8,31 +6,10 @@ const style = `https://api.maptiler.com/maps/aquarelle/style.json?key=${
   useRuntimeConfig().public.maptilerKey
 }`;
 
-const q = ref((router.currentRoute.value.query.q as string) || "");
+const mac = ref((router.currentRoute.value.query.mac as string) || "");
+const frames = useFetch(mac ? `/api/frames/${mac.value}` : "/api/frames");
 const center = ref<[number, number]>([121.81, 39.084]);
 const zoom = ref(16);
-const records = ref<Report[]>([]);
-
-function search() {
-  if (!q.value) {
-    return;
-  }
-  router.replace({ query: { q: q.value } });
-  $fetch<Report[]>("/api/search", {
-    query: { q: q.value },
-  })
-    .then((res) => {
-      records.value = res;
-    })
-    .catch((err) => {
-      toast.add({
-        title: err.message,
-        description: err.data.message,
-        color: "warning",
-      });
-    });
-}
-onMounted(search);
 </script>
 
 <template>
@@ -45,9 +22,9 @@ onMounted(search);
     <MglNavigationControl />
     <MglGeolocateControl />
     <MglCustomControl class="maplibregl-ctrl">
-      <UForm @submit.prevent="search">
+      <UForm>
         <UFieldGroup>
-          <UInput v-model="q" placeholder="Search" />
+          <UInputMenu v-model="mac" placeholder="Search" />
           <UButton icon="i-lucide-search" type="submit" />
         </UFieldGroup>
       </UForm>

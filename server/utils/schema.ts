@@ -6,6 +6,7 @@ import {
   integer,
   macaddr,
   timestamp,
+  point,
 } from "drizzle-orm/pg-core";
 import { drizzle } from "drizzle-orm/node-postgres";
 
@@ -23,6 +24,7 @@ export const framesTable = pgTable("frames", {
   from: macaddr("from").notNull(),
   to: macaddr("to").notNull(),
   timestamp: timestamp().defaultNow().notNull(),
+  location: point("location").notNull(),
   rssi: integer("rssi").notNull(),
   csi: text("csi"),
 });

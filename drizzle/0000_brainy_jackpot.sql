@@ -11,6 +11,7 @@ CREATE TABLE "frames" (
 	"from" "macaddr" NOT NULL,
 	"to" "macaddr" NOT NULL,
 	"timestamp" timestamp DEFAULT now() NOT NULL,
+	"location" "point" NOT NULL,
 	"rssi" integer NOT NULL,
 	"csi" text
 );
