@@ -7,9 +7,22 @@ const style = `https://api.maptiler.com/maps/aquarelle/style.json?key=${
 }`;
 
 const mac = ref((router.currentRoute.value.query.mac as string) || "");
-const frames = useFetch(mac ? `/api/frames/${mac.value}` : "/api/frames");
+const { data: frames } = useFetch(
+  mac ? `/api/frames/${mac.value}` : "/api/frames"
+);
+
 const center = ref<[number, number]>([121.81, 39.084]);
 const zoom = ref(16);
+
+const markers = computed(() => {
+  const macMap = new Map<string, { location: [number, number] }>();
+  frames.value?.forEach((frame) => {
+    macMap.set(frame.probe, { location: frame.location });
+    macMap.set(frame.from, { location: frame.location });
+    macMap.set(frame.to, { location: frame.location });
+  });
+  return Array.from(macMap.entries());
+});
 </script>
 
 <template>
@@ -24,7 +37,7 @@ const zoom = ref(16);
     <MglCustomControl class="maplibregl-ctrl">
       <UForm>
         <UFieldGroup>
-          <UInputMenu v-model="mac" placeholder="Search" />
+          <UInput v-model="mac" placeholder="Search" />
           <UButton icon="i-lucide-search" type="submit" />
         </UFieldGroup>
       </UForm>
@@ -36,5 +49,14 @@ const zoom = ref(16);
         </UBadge>
       </NuxtLink>
     </MglCustomControl>
+    <MglMarker
+      v-for="marker in markers"
+      :key="marker[0]"
+      :coordinates="marker[1].location"
+    >
+      <template #marker>
+        <UBadge>{{ marker[0] }}</UBadge>
+      </template>
+    </MglMarker>
   </MglMap>
 </template>
