@@ -1,3 +1,3 @@
 export default defineEventHandler(async (event) => {
-  return await db.select().from(devicesTable);
+  return await db.select().from(framesTable);
 });

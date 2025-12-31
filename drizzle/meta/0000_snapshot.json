@@ -1,5 +1,5 @@
 {
-  "id": "a5e7c328-b73c-49d6-9366-50ad3639d8f5",
+  "id": "5f2e6d95-818c-4ae1-af18-a63458024edc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -63,6 +63,13 @@
           "type": "macaddr",
           "primaryKey": false,
           "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         },
         "rssi": {
           "name": "rssi",

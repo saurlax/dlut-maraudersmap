@@ -10,6 +10,7 @@ CREATE TABLE "frames" (
 	"probe" "macaddr" NOT NULL,
 	"from" "macaddr" NOT NULL,
 	"to" "macaddr" NOT NULL,
+	"timestamp" timestamp DEFAULT now() NOT NULL,
 	"rssi" integer NOT NULL,
 	"csi" text
 );
